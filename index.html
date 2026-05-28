@@ -294,11 +294,13 @@
             cursor: pointer;
         }
 
-        .book-3d:hover {
+        .book-3d:hover,
+        .book-3d.is-open {
             transform: translateX(-50px) rotateY(0deg) rotateX(0deg);
         }
 
-        .book-3d:hover .book-cover {
+        .book-3d:hover .book-cover,
+        .book-3d.is-open .book-cover {
             transform: rotateY(-160deg);
         }
 
@@ -334,7 +336,8 @@
             transition: opacity 0.3s ease;
         }
 
-        .book-3d:hover::before {
+        .book-3d:hover::before,
+        .book-3d.is-open::before {
             opacity: 0;
         }
 
@@ -525,6 +528,7 @@
         .phone-ui:hover .mockup-original {
             opacity: 0;
             transform: scale(0.01);
+            filter: none;
         }
 
         .phone-ui.hovered .mockup-reveal,
@@ -532,6 +536,7 @@
             opacity: 1;
             transform: scale(1);
             z-index: 2;
+            filter: none;
         }
 
         footer {
@@ -614,20 +619,31 @@
         }
 
         @media (max-width: 900px) {
+            html,
+            body {
+                width: 100%;
+                min-height: 100%;
+            }
+
             .container {
-                padding: 0 20px;
+                width: 100%;
+                max-width: none;
+                padding: 0 clamp(18px, 5vw, 32px);
             }
 
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
-                padding-top: 60px;
-                padding-bottom: 80px;
+                gap: 20px;
+                width: 100%;
+                padding-top: 40px;
+                padding-bottom: 0;
             }
 
             .hero {
                 height: auto;
-                min-height: 100vh;
+                min-height: auto;
+                align-items: stretch;
+                overflow: hidden;
             }
 
             .hero-text,
@@ -637,19 +653,86 @@
 
             .hero-visual {
                 justify-content: center;
+                width: 100%;
+                height: auto;
+                min-height: 0;
+                order: 4;
+                margin: 40px 0;
+                perspective: 1200px;
+            }
+
+            .hero-text {
+                display: contents;
+            }
+
+            .hero-text > img {
+                order: 1;
+                margin-bottom: 0 !important;
             }
 
             .hero-text h1 {
-                font-size: 40px;
+                order: 2;
+                font-size: 32px;
+                margin-bottom: 0;
             }
 
-            .hero-visual {
-                height: 440px;
+            .hero-text p {
+                order: 3;
+                width: 100%;
+                max-width: none;
+                margin-bottom: 0;
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            .hero-text .form-box {
+                order: 5;
+                width: 100%;
+                max-width: none;
+                padding: 20px;
+            }
+
+            .input-wrap {
+                flex-direction: column;
+                gap: 12px;
+                background: transparent;
+                border: none;
+                overflow: visible;
+            }
+
+            input,
+            .btn-submit {
+                width: 100%;
+                border-radius: 8px;
+            }
+
+            input {
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.12);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+
+            .btn-submit {
+                padding: 20px;
             }
 
             .book-3d {
-                width: 240px;
-                height: 360px;
+                width: min(70vw, 252px);
+                height: min(116.2vw, 418px);
+                transform: rotateY(-20deg) rotateX(4deg);
+            }
+
+            .book-3d:hover,
+            .book-3d.is-open {
+                transform: rotateY(0deg) rotateX(0deg);
+            }
+
+            .hero-visual::before {
+                width: min(150vw, 560px);
+                height: min(150vw, 560px);
+                right: 50%;
+                bottom: -24%;
+                transform: translateX(50%);
             }
 
             .book-inside {
@@ -672,35 +755,96 @@
             }
 
             .phone-ui {
-                width: 240px;
-                height: 485px;
+                width: min(68vw, 280px);
+                height: auto;
+                aspect-ratio: 2246 / 4608;
             }
 
             .marquee-line {
                 font-size: 12vw;
             }
 
+            .section-app {
+                width: 100%;
+                min-height: auto;
+                padding: 60px 0;
+                margin: 0;
+            }
+
+            .phone-stage {
+                width: 100%;
+                height: auto;
+                min-height: 0;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+
+            .ripple-container {
+                inset: 0;
+            }
+
+            .ripple {
+                width: min(72vw, 300px);
+                height: min(72vw, 300px);
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
             footer .container {
-                flex-direction: column;
-                gap: 20px;
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-areas:
+                    "logo social"
+                    "copy copy";
+                gap: 18px 20px;
                 text-align: center;
             }
 
             .footer-social {
                 position: static;
                 transform: none;
-                order: 2;
-                margin: 10px 0;
+                grid-area: social;
+                justify-self: end;
+                align-self: center;
+                margin: 0;
             }
 
             .footer-copyright {
                 text-align: center;
-                order: 3;
+                grid-area: copy;
             }
 
             .footer-logo {
+                grid-area: logo;
                 justify-content: center;
-                order: 1;
+                justify-self: start;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .book-3d {
+                width: min(76vw, 230px);
+                height: min(126vw, 382px);
+            }
+
+            .book-3d::before {
+                right: -12px;
+                width: 22px;
+            }
+
+            .book-inside {
+                padding: 24px 18px;
+            }
+
+            .book-inside p {
+                max-width: 145px;
+            }
+
+            footer .container {
+                padding: 0 18px;
             }
         }
     </style>
@@ -889,6 +1033,36 @@
             document.addEventListener('DOMContentLoaded', initPaperCrumble);
         } else {
             initPaperCrumble();
+        }
+
+        function initBookToggle() {
+            const book = document.querySelector('.book-3d');
+            if (!book) {
+                return;
+            }
+
+            let closeTimer = null;
+
+            function closeBook() {
+                book.classList.remove('is-open');
+                clearTimeout(closeTimer);
+                closeTimer = null;
+            }
+
+            book.addEventListener('click', () => {
+                const isOpen = book.classList.toggle('is-open');
+                clearTimeout(closeTimer);
+
+                if (isOpen) {
+                    closeTimer = setTimeout(closeBook, 3000);
+                }
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initBookToggle);
+        } else {
+            initBookToggle();
         }
     </script>
 
