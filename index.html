@@ -1091,11 +1091,7 @@
             }
 
             if (isMobile) {
-                openBook();
-
-                setInterval(() => {
-                    openBook();
-                }, 5000);
+                book.classList.remove('is-open');
 
                 book.addEventListener('click', () => {
                     openBook();
