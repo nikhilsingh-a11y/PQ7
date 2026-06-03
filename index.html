@@ -185,6 +185,180 @@
             cursor: not-allowed;
         }
 
+        .hero-cta {
+            display: grid;
+            grid-template-columns: 157px 240px;
+            gap: 20px;
+            align-items: end;
+            justify-content: center;
+            width: 100%;
+            max-width: 417px;
+        }
+
+        .cta-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-panel h3 {
+            font-family: var(--body-font);
+            font-size: 14px;
+            line-height: 1;
+            font-weight: 400;
+            color: #f5f5f5;
+            white-space: nowrap;
+        }
+
+        .hero-cta .cta-panel:last-child {
+            align-items: flex-start;
+        }
+
+        .hero-cta .cta-panel:first-child {
+            align-items: flex-start;
+        }
+
+        .amazon-button {
+            display: inline-flex;
+            width: 157px;
+            height: 52px;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .amazon-button:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+        }
+
+        .amazon-button img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .waitlist-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 240px;
+            height: 52px;
+            padding: 0 24px;
+            border-radius: 999px;
+            background: var(--neon-green);
+            color: #000;
+            font-family: var(--body-font);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .waitlist-button:hover {
+            filter: brightness(1.07);
+            transform: translateY(-2px);
+        }
+
+        .waitlist-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.58);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 1200;
+        }
+
+        .waitlist-overlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .waitlist-sheet {
+            position: relative;
+            width: min(100%, 420px);
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            background: #071225;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+            transform: translateY(12px);
+            transition: transform 0.2s ease;
+        }
+
+        .waitlist-overlay.is-open .waitlist-sheet {
+            transform: translateY(0);
+        }
+
+        .waitlist-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            cursor: pointer;
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .waitlist-sheet h3 {
+            margin-bottom: 10px;
+            font-family: var(--heading-font);
+            font-size: 1.45rem;
+            font-weight: 600;
+        }
+
+        .waitlist-sheet p {
+            margin-bottom: 22px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .waitlist-form input {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .waitlist-form .btn-submit {
+            width: 100%;
+            height: 52px;
+            border-radius: 999px;
+            text-transform: none;
+            font-family: var(--body-font);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+        }
+
+        .mobile-bottom-heading {
+            display: none;
+        }
+
         .hero-visual {
             grid-column: 2;
             position: relative;
@@ -633,7 +807,7 @@
 
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 12px;
                 width: 100%;
                 padding-top: 40px;
                 padding-bottom: 0;
@@ -694,6 +868,104 @@
                 width: 100%;
                 max-width: none;
                 padding: 20px;
+            }
+
+            .hero-text .hero-cta {
+                order: 5;
+                max-width: none;
+            }
+
+            .hero-cta {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                justify-items: center;
+            }
+
+            .amazon-button {
+                width: 181px;
+                height: 60px;
+            }
+
+            .cta-panel {
+                width: 100%;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-cta .cta-panel:first-child {
+                align-items: center;
+                padding-top: 12px;
+            }
+
+            .cta-panel h3 {
+                text-align: center;
+                white-space: normal;
+            }
+
+            .waitlist-button {
+                width: 100%;
+                height: 52px;
+                padding: 0 32px;
+            }
+
+            .hero-cta .cta-panel:last-child {
+                display: none;
+            }
+
+            .mobile-bottom-bar {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+                background: rgba(255, 255, 255, 0.08);
+                border-top: 1px solid rgba(255, 255, 255, 0.18);
+                box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.24);
+                backdrop-filter: blur(18px) saturate(140%);
+                -webkit-backdrop-filter: blur(18px) saturate(140%);
+                transform: translateZ(0);
+            }
+
+            .mobile-bottom-heading {
+                display: block;
+                font-family: var(--body-font);
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1;
+                color: #f5f5f5;
+                text-align: center;
+            }
+
+            .mobile-bottom-bar .waitlist-button {
+                width: 100%;
+                max-width: 420px;
+            }
+
+            body {
+                padding-bottom: 100px;
+            }
+
+            .waitlist-overlay {
+                align-items: flex-end;
+                padding: 0;
+            }
+
+            .waitlist-sheet {
+                width: 100%;
+                max-width: none;
+                padding: 28px 20px calc(28px + env(safe-area-inset-bottom));
+                border-right: none;
+                border-bottom: none;
+                border-left: none;
+                border-radius: 18px 18px 0 0;
+                transform: translateY(100%);
             }
 
             .input-wrap {
@@ -864,17 +1136,29 @@
                 <div class="hero-text">
                     <img src="PQ7 Logo.png"
                         alt="PQ7 Logo" style="height: 72px; width: auto; display: block; margin-bottom: 24px;">
-                    <h1>Dominate the Court,<br><span class="neon-text">You Against Yourself!</span></h1>
+                    <h1 class="neon-text">You Against Yourself</h1>
                     <p>The Ultimate Guide to Understanding Your Performance Strategy, Mindset, and Technique, Compiled
                         into the PQ7 Handbook</p>
-                    <div class="form-box">
-                        <h3>Get the E-Book Now!</h3>
+                    <!-- <div class="form-box">
+                        <h3>Join the PQ-7 App Waitlist</h3>
                         <form onsubmit="handleSubmit(event)">
                             <div class="input-wrap">
                                 <input id="email-input" type="email" placeholder="Enter your email address" required>
-                                <button type="submit" class="btn-submit" disabled>Get Book</button>
+                                <button type="submit" class="btn-submit" disabled>Join Waitlist</button>
                             </div>
                         </form>
+                    </div> -->
+                    <div class="hero-cta">
+                        <div class="cta-panel">
+                            <h3>Get our book</h3>
+                            <a class="amazon-button" href="#" aria-label="Order the PQ7 book on Amazon">
+                                <img src="book.png" alt="Order now at amazon.com">
+                            </a>
+                        </div>
+                        <div class="cta-panel">
+                            <h3>Get early access to our app</h3>
+                            <button class="waitlist-button" type="button" data-open-waitlist>Join Waitlist</button>
+                        </div>
                     </div>
                 </div>
                 <div class="scroll-indicator">
@@ -961,17 +1245,81 @@
         </footer>
     </div>
 
+    <div class="mobile-bottom-bar">
+        <div class="mobile-bottom-heading">Get early access to our app</div>
+        <button class="waitlist-button" type="button" data-open-waitlist>Join Waitlist</button>
+    </div>
+
+    <div class="waitlist-overlay" id="waitlist-overlay" aria-hidden="true">
+        <div class="waitlist-sheet" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">
+            <button class="waitlist-close" type="button" aria-label="Close waitlist form" data-close-waitlist>&times;</button>
+            <h3 id="waitlist-title">Join the Waitlist</h3>
+            <p>Enter your email and we will let you know when early access opens.</p>
+            <form class="waitlist-form" id="waitlist-form">
+                <input id="waitlist-email" type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-submit">Join Waitlist</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         function handleSubmit(e) {
             e.preventDefault();
-            const email = document.getElementById('email-input').value;
+            const emailInput = document.getElementById('email-input');
+            if (!emailInput) {
+                return;
+            }
+            const email = emailInput.value;
             alert("Thank you! The PQ7 Book download link has been sent to " + email);
         }
 
-        document.getElementById('email-input').addEventListener('input', function (e) {
-            const btn = document.querySelector('.btn-submit');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-            btn.disabled = !emailPattern.test(e.target.value.trim());
+        const emailInput = document.getElementById('email-input');
+        if (emailInput) {
+            emailInput.addEventListener('input', function (e) {
+                const btn = document.querySelector('.btn-submit');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+                btn.disabled = !emailPattern.test(e.target.value.trim());
+            });
+        }
+
+        const waitlistOverlay = document.getElementById('waitlist-overlay');
+        const waitlistEmail = document.getElementById('waitlist-email');
+        const waitlistForm = document.getElementById('waitlist-form');
+
+        function openWaitlist() {
+            waitlistOverlay.classList.add('is-open');
+            waitlistOverlay.setAttribute('aria-hidden', 'false');
+            window.setTimeout(() => waitlistEmail.focus(), 120);
+        }
+
+        function closeWaitlist() {
+            waitlistOverlay.classList.remove('is-open');
+            waitlistOverlay.setAttribute('aria-hidden', 'true');
+        }
+
+        document.querySelectorAll('[data-open-waitlist]').forEach((button) => {
+            button.addEventListener('click', openWaitlist);
+        });
+
+        document.querySelector('[data-close-waitlist]').addEventListener('click', closeWaitlist);
+
+        waitlistOverlay.addEventListener('click', function (e) {
+            if (e.target === waitlistOverlay) {
+                closeWaitlist();
+            }
+        });
+
+        waitlistForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Thank you! You have joined the PQ7 app waitlist.");
+            waitlistForm.reset();
+            closeWaitlist();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && waitlistOverlay.classList.contains('is-open')) {
+                closeWaitlist();
+            }
         });
 
         /* ============================================
