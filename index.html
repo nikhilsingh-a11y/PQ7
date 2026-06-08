@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PQ7 - You Against Yourself</title>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --neon-green: #ccff00;
@@ -39,6 +41,10 @@
             color: var(--neon-green);
         }
 
+        .pq7-highlight {
+            color: var(--neon-green);
+        }
+
         .hero {
             height: 100vh;
             min-height: 100vh;
@@ -56,8 +62,9 @@
         .section-app {
             background: transparent;
             min-height: 80vh;
-            padding-bottom: 40px;
+            padding: 80px 0 40px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -69,16 +76,16 @@
         }
 
         .court-grid {
-    /* Grid is used in both hero and second section */
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 100px 100px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-}
+            /* Grid is used in both hero and second section */
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+        }
 
-        
+
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -116,7 +123,11 @@
             margin-bottom: 40px;
             line-height: 1.6;
             text-align: left;
+            white-space: nowrap;
         }
+
+        .mobile-break { display: none; }
+@media (max-width: 600px) { .mobile-break { display: block; } }
 
         .form-box {
             background: rgba(255, 255, 255, 0.03);
@@ -187,12 +198,12 @@
 
         .hero-cta {
             display: grid;
-            grid-template-columns: 157px 240px;
+            grid-template-columns: 231px;
             gap: 20px;
             align-items: end;
-            justify-content: center;
+            justify-content: flex-start;
             width: 100%;
-            max-width: 417px;
+            max-width: 491px;
         }
 
         .cta-panel {
@@ -221,8 +232,20 @@
 
         .amazon-button {
             display: inline-flex;
-            width: 157px;
-            height: 52px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 6px;
+            width: 231px;
+            height: 48px;
+            padding: 4px 20px;
+            border: 1px solid #fff;
+            border-radius: 999px;
+            background: #231F20;
+            color: #fff;
+            text-decoration: none;
+            line-height: 1;
             transition: transform 0.2s ease, filter 0.2s ease;
         }
 
@@ -231,10 +254,17 @@
             transform: translateY(-2px);
         }
 
-        .amazon-button img {
+        .amazon-button-label {
+            font-family: var(--body-font);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .amazon-logo {
             display: block;
-            width: 100%;
-            height: 100%;
+            width: 116px;
+            height: 20px;
             object-fit: contain;
         }
 
@@ -352,11 +382,93 @@
         }
 
         .mobile-bottom-bar {
-            display: none;
-        }
+    display: none;
+}
+.mobile-bottom-bar.is-visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 16px; /* added horizontal padding */
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+
 
         .mobile-bottom-heading {
             display: none;
+        }
+
+        .mobile-app-heading,
+        .mobile-app-cta,
+        .hero-mobile-amazon {
+            display: none;
+        }
+
+        .desktop-app-heading {
+            position: relative;
+            z-index: 4;
+            margin-bottom: 32px;
+            font-family: var(--heading-font);
+            font-size: 52px;
+            line-height: 1.05;
+            font-weight: 800;
+            color: #f8fafc;
+            text-align: center;
+        }
+
+        .desktop-app-cta {
+            display: flex;
+            position: relative;
+            z-index: 4;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .desktop-app-cta .cta-label {
+            font-family: var(--body-font);
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .desktop-waitlist-btn {
+            width: auto;
+            min-width: 240px;
+            padding: 0 40px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .desktop-app-cta .already-access {
+            font-family: var(--body-font);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-dim);
+            text-align: center;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .desktop-app-cta .already-access:hover {
+            color: var(--text-light);
+        }
+
+        @media (min-width: 901px) {
+            .mobile-app-heading {
+                display: none;
+            }
+
+            .mobile-app-cta {
+                display: none;
+            }
         }
 
         .hero-visual {
@@ -441,6 +553,7 @@
         }
 
         @keyframes driftArrow {
+
             0%,
             100% {
                 transform: translateY(-5px);
@@ -463,7 +576,7 @@
             position: relative;
             z-index: 1;
             transform-style: preserve-3d;
-            transform: translateX(-80px) rotateY(-25deg) rotateX(5deg);
+            transform: translateX(-60px) rotateY(-25deg) rotateX(5deg);
             transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
         }
@@ -793,6 +906,14 @@
         }
 
         @media (max-width: 900px) {
+            .desktop-app-heading {
+                display: none;
+            }
+
+            .desktop-app-cta {
+                display: none;
+            }
+
             html,
             body {
                 width: 100%;
@@ -807,15 +928,19 @@
 
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+                gap: clamp(8px, 1.5dvh, 14px);
                 width: 100%;
-                padding-top: 40px;
-                padding-bottom: 0;
+                height: 100%;
+                padding-top: clamp(20px, 4dvh, 40px);
+                padding-bottom: clamp(18px, 3dvh, 30px);
             }
 
             .hero {
-                height: auto;
-                min-height: auto;
+                height: 100vh;
+                height: 100dvh;
+                min-height: 100vh;
+                min-height: 100dvh;
                 align-items: stretch;
                 overflow: hidden;
             }
@@ -827,11 +952,12 @@
 
             .hero-visual {
                 justify-content: center;
+                align-items: center;
                 width: 100%;
-                height: auto;
+                height: 100%;
                 min-height: 0;
                 order: 4;
-                margin: 12px 0 0 0;
+                margin: 0;
                 perspective: 1200px;
             }
 
@@ -839,7 +965,7 @@
                 display: contents;
             }
 
-            .hero-text > img {
+            .hero-text>img {
                 order: 1;
                 margin-bottom: 0 !important;
                 margin-left: auto;
@@ -858,10 +984,14 @@
                 width: 100%;
                 max-width: none;
                 margin-bottom: 0;
-                font-size: 14px;
+                font-size: 16px;
+                line-height: 1.45;
                 font-weight: 400;
+                color: rgba(255, 255, 255, 0.8);
                 text-align: center;
             }
+
+            .mobile-break { display: inline; }
 
             .hero-text .form-box {
                 order: 5;
@@ -877,13 +1007,14 @@
 
             .hero-cta {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 0;
                 justify-items: center;
+                align-self: end;
             }
 
             .amazon-button {
-                width: 181px;
-                height: 60px;
+                width: min(100%, 272px);
+                height: 48px;
             }
 
             .cta-panel {
@@ -894,7 +1025,11 @@
 
             .hero-cta .cta-panel:first-child {
                 align-items: center;
-                padding-top: 12px;
+                padding-top: 0;
+            }
+
+            .hero-cta .cta-panel:first-child h3 {
+                display: none;
             }
 
             .cta-panel h3 {
@@ -912,6 +1047,20 @@
                 display: none;
             }
 
+            .hero-mobile-amazon {
+                display: flex;
+                justify-content: center;
+                order: 6;
+                align-self: center;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .hero-mobile-amazon .amazon-button {
+                width: 240px;
+                height: 48px;
+            }
+
             .mobile-bottom-bar {
                 position: fixed;
                 left: 0;
@@ -924,32 +1073,32 @@
                 align-items: center;
                 justify-content: center;
                 gap: 10px;
-                padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+                padding: 9px 24px calc(9px + env(safe-area-inset-bottom));
                 background: rgba(255, 255, 255, 0.08);
                 border-top: 1px solid rgba(255, 255, 255, 0.18);
                 box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.24);
                 backdrop-filter: blur(18px) saturate(140%);
                 -webkit-backdrop-filter: blur(18px) saturate(140%);
-                transform: translateZ(0);
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(100%);
+                transition: opacity 0.25s ease, transform 0.25s ease;
             }
 
-            .mobile-bottom-heading {
-                display: block;
-                font-family: var(--body-font);
-                font-size: 14px;
-                font-weight: 400;
-                line-height: 1;
-                color: #f5f5f5;
-                text-align: center;
+            .mobile-bottom-bar.is-visible {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
             }
 
-            .mobile-bottom-bar .waitlist-button {
+            .mobile-bottom-bar .amazon-button {
                 width: 100%;
-                max-width: 420px;
+                max-width: 412px;
+                height: 48px;
             }
 
             body {
-                padding-bottom: 100px;
+                padding-bottom: 74px;
             }
 
             .waitlist-overlay {
@@ -993,8 +1142,10 @@
             }
 
             .book-3d {
-                width: 144px;
-                height: 216px;
+                width: auto;
+                height: clamp(242px, 46dvh, 462px);
+                max-width: 72vw;
+                aspect-ratio: 2 / 3;
                 transform: rotateY(-20deg) rotateX(4deg);
             }
 
@@ -1031,9 +1182,40 @@
             }
 
             .phone-ui {
-                width: min(68vw, 280px);
+                width: min(48vw, 200px);
                 height: auto;
                 aspect-ratio: 2246 / 4608;
+            }
+
+            .phone-screen-img {
+                transition: transform 0.32s ease, opacity 0.32s ease;
+                filter: none;
+            }
+
+            .mockup-reveal {
+                transform: scale(0.96);
+            }
+
+            .phone-ui:hover .mockup-original {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .phone-ui:hover .mockup-reveal {
+                opacity: 0;
+                transform: scale(0.96);
+                z-index: 1;
+            }
+
+            .phone-ui.hovered .mockup-original {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+
+            .phone-ui.hovered .mockup-reveal {
+                opacity: 1;
+                transform: scale(1);
+                z-index: 2;
             }
 
             .marquee-line {
@@ -1042,9 +1224,58 @@
 
             .section-app {
                 width: 100%;
+                height: 100vh;
+                height: 100dvh;
                 min-height: auto;
-                padding: 60px 0;
+                padding: clamp(24px, 4dvh, 48px) 0;
                 margin: 0;
+                flex-direction: column;
+                justify-content: center;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            .mobile-app-heading {
+                display: block;
+                position: relative;
+                z-index: 4;
+
+                margin: 0 auto clamp(16px, 3dvh, 32px);
+                padding: 0 20px;
+                font-family: var(--heading-font);
+                font-size: 24px;
+                line-height: 1.15;
+                font-weight: 600;
+                color: #f8fafc;
+                text-align: center;
+            }
+
+            .mobile-app-cta {
+                display: flex;
+                position: relative;
+                z-index: 4;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                margin-top: clamp(12px, 2dvh, 24px);
+                padding: 0 clamp(24px, 6vw, 36px);
+            }
+
+            .mobile-app-cta p {
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.3;
+                text-align: center;
+            }
+
+            .mobile-app-cta .waitlist-button {
+                width: 100%;
+                max-width: 412px;
+                height: 60px;
+                font-size: 16px;
+                font-weight: 600;
             }
 
             .phone-stage {
@@ -1061,8 +1292,8 @@
             }
 
             .ripple {
-                width: min(72vw, 300px);
-                height: min(72vw, 300px);
+                width: min(52vw, 220px);
+                height: min(52vw, 220px);
             }
 
             .scroll-indicator {
@@ -1102,8 +1333,8 @@
 
         @media (max-width: 560px) {
             .book-3d {
-                width: 144px;
-                height: 216px;
+                width: auto;
+                height: clamp(242px, 46dvh, 462px);
             }
 
             .book-3d::before {
@@ -1134,11 +1365,10 @@
             <div class="court-grid"></div>
             <div class="container hero-content">
                 <div class="hero-text">
-                    <img src="PQ7 Logo.png"
-                        alt="PQ7 Logo" style="height: 72px; width: auto; display: block; margin-bottom: 24px;">
-                    <h1 class="neon-text">You Against Yourself</h1>
-                    <p>The Ultimate Guide to Understanding Your Performance Strategy, Mindset, and Technique, Compiled
-                        into the PQ7 Handbook</p>
+                    <img src="PQ7 Logo.png" alt="PQ7 Logo"
+                        style="height: 72px; width: auto; display: block; margin-bottom: 24px;">
+                    <h1>What's your <span class="pq7-highlight">PQ7?</span></h1>
+                    <p>What Pickleball Reveals About<br class="mobile-break"> Who You Really Are</p>
                     <!-- <div class="form-box">
                         <h3>Join the PQ-7 App Waitlist</h3>
                         <form onsubmit="handleSubmit(event)">
@@ -1150,22 +1380,25 @@
                     </div> -->
                     <div class="hero-cta">
                         <div class="cta-panel">
-                            <h3>Get our book</h3>
-                            <a class="amazon-button" href="#" aria-label="Order the PQ7 book on Amazon">
-                                <img src="book.png" alt="Order now at amazon.com">
+                            <a class="amazon-button" href="#" aria-label="Get the PQ7 book on Amazon.com">
+                                <span class="amazon-button-label">Get the book on</span>
+                                <img class="amazon-logo" src="logo_amazon.svg" alt="">
                             </a>
                         </div>
-                        <div class="cta-panel">
-                            <h3>Get early access to our app</h3>
-                            <button class="waitlist-button" type="button" data-open-waitlist>Join Waitlist</button>
-                        </div>
+                    </div>
+                    <div class="hero-mobile-amazon">
+                        <a class="amazon-button" href="#" aria-label="Get the PQ7 book on Amazon.com">
+                            <span class="amazon-button-label">Get the book on</span>
+                            <img class="amazon-logo" src="logo_amazon.svg" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="scroll-indicator">
                     <div class="scroll-circle">
                         <svg class="circular-text" viewBox="0 0 100 100" aria-hidden="true">
                             <defs>
-                                <path id="scroll-text-path" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+                                <path id="scroll-text-path"
+                                    d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
                             </defs>
                             <text>
                                 <textPath href="#scroll-text-path" startOffset="0%">
@@ -1184,8 +1417,10 @@
                         </div>
                         <div class="book-inside">
                             <h3>Chapter 1</h3>
-                            <p>Master the pickleball court with sharper footwork, calmer decisions, and a repeatable strategy for every rally.</p>
-                            <p>Read your opponent, own the kitchen line, and turn pressure into patient, precise control.</p>
+                            <p>Master the pickleball court with sharper footwork, calmer decisions, and a repeatable
+                                strategy for every rally.</p>
+                            <p>Read your opponent, own the kitchen line, and turn pressure into patient, precise
+                                control.</p>
                         </div>
                     </div>
                 </div>
@@ -1196,7 +1431,15 @@
         <section class="section-app">
             <div class="court-grid"></div>
 
-            <div class="marquee-line">PQ-7 MOBILE APP COMING SOON · PQ-7 MOBILE APP COMING SOON · PQ-7 MOBILE APP COMING SOON · </div>
+            <h2 class="mobile-app-heading">Join the PQ7 Movement.<br>App Coming Soon.</h2>
+            <h2 class="desktop-app-heading">Join the PQ7 movement.<br>App coming soon.</h2>
+
+
+            <div class="desktop-app-cta">
+                <button class="waitlist-button desktop-waitlist-btn" type="button" data-open-waitlist>Join
+                    waitlist</button>
+            </div>
+
             <div class="phone-stage">
                 <div class="ripple-container">
                     <div class="ripple"></div>
@@ -1206,31 +1449,26 @@
                     <div class="ripple"></div>
                 </div>
                 <div class="phone-ui" id="phone-hover-trigger">
-                    <img src="Splash.png"
-                        class="phone-screen-img mockup-original" alt="PQ7 App Screen">
-                    <img src="Splash2.png"
-                        class="phone-screen-img mockup-reveal" alt="PQ7 Mockup Reveal">
+                    <img src="Splash.png" class="phone-screen-img mockup-original" alt="PQ7 App Screen">
+                    <img src="Splash2.png" class="phone-screen-img mockup-reveal" alt="PQ7 Mockup Reveal">
                 </div>
+            </div>
+
+            <div class="mobile-app-cta">
+                <button class="waitlist-button" type="button" data-open-waitlist>Join Waitlist</button>
             </div>
         </section>
 
         <footer>
             <div class="container">
                 <div class="footer-logo">
-                    <img src="PQ7 Logo.png"
-                        alt="PQ7 Logo" style="height:50px; width:auto;">
+                    <img src="PQ7 Logo.png" alt="PQ7 Logo" style="height:50px; width:auto;">
                 </div>
                 <div class="footer-social">
                     <a href="#" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
                     <a href="#" aria-label="TikTok">
@@ -1246,13 +1484,16 @@
     </div>
 
     <div class="mobile-bottom-bar">
-        <div class="mobile-bottom-heading">Get early access to our app</div>
-        <button class="waitlist-button" type="button" data-open-waitlist>Join Waitlist</button>
+        <a class="amazon-button" href="#" aria-label="Order the PQ7 book on Amazon">
+            <span class="amazon-button-label">Get the book on</span>
+            <img class="amazon-logo" src="logo_amazon.svg" alt="">
+        </a>
     </div>
 
     <div class="waitlist-overlay" id="waitlist-overlay" aria-hidden="true">
         <div class="waitlist-sheet" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">
-            <button class="waitlist-close" type="button" aria-label="Close waitlist form" data-close-waitlist>&times;</button>
+            <button class="waitlist-close" type="button" aria-label="Close waitlist form"
+                data-close-waitlist>&times;</button>
             <h3 id="waitlist-title">Join the Waitlist</h3>
             <p>Enter your email and we will let you know when early access opens.</p>
             <form class="waitlist-form" id="waitlist-form">
@@ -1285,6 +1526,25 @@
         const waitlistOverlay = document.getElementById('waitlist-overlay');
         const waitlistEmail = document.getElementById('waitlist-email');
         const waitlistForm = document.getElementById('waitlist-form');
+        const mobileBottomBar = document.querySelector('.mobile-bottom-bar');
+        const appSection = document.querySelector('.section-app');
+        const heroSection = document.querySelector('.hero');
+
+        function updateMobileBottomBar() {
+            if (!mobileBottomBar || !heroSection) {
+                return;
+            }
+
+            const isMobile = window.innerWidth <= 900;
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            const pastHero = heroBottom <= 0;
+
+            mobileBottomBar.classList.toggle('is-visible', isMobile && pastHero);
+        }
+
+        window.addEventListener('scroll', updateMobileBottomBar, { passive: true });
+        window.addEventListener('resize', updateMobileBottomBar);
+        updateMobileBottomBar();
 
         function openWaitlist() {
             waitlistOverlay.classList.add('is-open');
@@ -1392,19 +1652,16 @@
             }
 
             if (isMobile) {
-                let showingReveal = false;
+                map1.setAttribute('scale', 0);
+                map2.setAttribute('scale', 0);
 
-                setInterval(() => {
-                    showingReveal = !showingReveal;
-
-                    if (showingReveal) {
-                        trigger.classList.add('hovered');
-                        animateCrumble(120, 0);
-                    } else {
+                trigger.addEventListener('click', () => {
+                    if (trigger.classList.contains('hovered')) {
                         trigger.classList.remove('hovered');
-                        animateCrumble(0, 120);
+                    } else {
+                        trigger.classList.add('hovered');
                     }
-                }, 3000);
+                });
             }
         }
 
@@ -1446,7 +1703,7 @@
                 book.classList.remove('is-open');
 
                 book.addEventListener('click', () => {
-                    openBook();
+                    book.classList.toggle('is-open');
                 });
             } else {
                 book.addEventListener('click', () => {
