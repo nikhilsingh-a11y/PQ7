@@ -126,8 +126,15 @@
             white-space: nowrap;
         }
 
-        .mobile-break { display: none; }
-@media (max-width: 600px) { .mobile-break { display: block; } }
+        .mobile-break {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .mobile-break {
+                display: block;
+            }
+        }
 
         .form-box {
             background: rgba(255, 255, 255, 0.03);
@@ -382,20 +389,22 @@
         }
 
         .mobile-bottom-bar {
-    display: none;
-}
-.mobile-bottom-bar.is-visible {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 16px; /* added horizontal padding */
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
-}
+            display: none;
+        }
+
+        .mobile-bottom-bar.is-visible {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 16px;
+            /* added horizontal padding */
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
 
 
 
@@ -991,7 +1000,9 @@
                 text-align: center;
             }
 
-            .mobile-break { display: inline; }
+            .mobile-break {
+                display: inline;
+            }
 
             .hero-text .form-box {
                 order: 5;
@@ -1245,7 +1256,7 @@
                 font-family: var(--heading-font);
                 font-size: 24px;
                 line-height: 1.15;
-                font-weight: 600;
+                font-weight: 700;
                 color: #f8fafc;
                 text-align: center;
             }
@@ -1455,7 +1466,7 @@
             </div>
 
             <div class="mobile-app-cta">
-                <button class="waitlist-button" type="button" data-open-waitlist>Join Waitlist</button>
+                <button class="waitlist-button" type="button" data-open-waitlist>Join the Waitlist</button>
             </div>
         </section>
 
@@ -1498,7 +1509,7 @@
             <p>Enter your email and we will let you know when early access opens.</p>
             <form class="waitlist-form" id="waitlist-form">
                 <input id="waitlist-email" type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn-submit">Join Waitlist</button>
+                <button type="submit" class="btn-submit">Join the Waitlist</button>
             </form>
         </div>
     </div>
